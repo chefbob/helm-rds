@@ -1,0 +1,7 @@
+replicaCount: 1
+
+nameOverride: ""
+fullnameOverride: ""
+
+readerEndpoint: "{{rds DBClusterIdentifier READER us-east-1}}"
+writerEndpoint: "{{rds DBClusterIdentifier WRITER us-east-1}}"
