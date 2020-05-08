@@ -2,19 +2,20 @@ name: "rds"
 version: "1.0.0"
 usage: "inject AWS DB Cluster Endpoint into Helm Charts"
 description: |-
-This plugin provides the ability to dynamically retrieve the RDS Cluster EndPoint by passing in the Cluster Identifier and the Endpoint Type, READER or WRITER.  We will also use the first Endpoint in the list if more than one is returned.
+  This plugin provides the ability to dynamically retrieve the RDS Cluster EndPoint by passing in the Cluster Identifier and the Endpoint Type, READER or WRITER.  We will also use the first Endpoint in the list if more than one is returned.
 
-We use this plugin in combination with Terraform where Terraform creates a new Database and then our Helm code retrieves the endpoint for use with our application.
+  We use this plugin in combination with Terraform where Terraform creates a new Database and then our Helm code retrieves the endpoint for use with our application.
 
-During installation or upgrade, the Cluster Endpoint is replaced with the actual value.
+  During installation or upgrade, the Cluster Endpoint is replaced with the actual value.
 
 Usage:
-Simply use helm as you would normally, but add 'rds' before any command,
-the plugin will automatically search for values with the pattern:
-{{rds DBClusterIdentifier WRITER aws-region}}
-{{rds DBClusterIdentifier READER aws-region}}
-and replace them with the Endpoint
-Note: You must have permission to query RDS from the node where Helm Deploy is running.
----
+  Simply use helm as you would normally, but add 'rds' before any command,the plugin will automatically search for values with the pattern
+
+    {{rds DBClusterIdentifier WRITER aws-region}}
+    {{rds DBClusterIdentifier READER aws-region}}
+
+  and replace them with the Endpoint
+  Note- You must have permission to query RDS from the node where Helm Deploy is running.
+
 command: "$HELM_PLUGIN_DIR/efs.sh"
 useTunnel: true
